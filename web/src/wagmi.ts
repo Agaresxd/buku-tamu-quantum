@@ -15,7 +15,7 @@ const connectors = connectorsForWallets(
     },
   ],
   {
-    appName: "Buku Tamu Quantum",
+    appName: "Quantum Guestbook",
     projectId: import.meta.env.VITE_WALLETCONNECT_PROJECT_ID ?? "unused",
   },
 );

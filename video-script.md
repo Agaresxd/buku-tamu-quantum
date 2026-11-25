@@ -1,41 +1,41 @@
-# Naskah Video Demo — Buku Tamu Quantum
+# Demo Video Script — Quantum Guestbook
 
-Durasi target: **±2:40** (batas fest: 3 menit). Rekam layar + suara sendiri — Muse tidak bisa membuat video.
-Bahasa: Indonesia. Rekam di 1080p, zoom browser 100%, matikan notifikasi.
+Target length: **~2:40** (fest limit: 3 minutes). Record screen + voice yourself — Muse cannot generate video.
+Language: English. Record at 1080p, browser zoom 100%, notifications off.
 
-## Adegan 1 — Pembuka (0:00–0:15)
-**Tampilkan:** halaman web Buku Tamu Quantum (localhost:5174 atau versi deploy).
-**Katakan:**
-> "Halo, ini Buku Tamu Quantum — buku tamu post-quantum di atas QoreChain, dibuat untuk Build Before Q-Day."
+## Scene 1 — Opening (0:00–0:15)
+**Show:** the Quantum Guestbook web page (localhost:5174 or the deployed version).
+**Say:**
+> "Hi, this is Quantum Guestbook — a post-quantum guestbook on QoreChain, built for Build Before Q-Day."
 
-## Adegan 2 — Masalahnya (0:15–0:45)
-**Tampilkan:** tetap di halaman utama, arahkan kursor ke bagian 'Cara kerjanya'.
-**Katakan:**
-> "Kunci dompet biasa, secp256k1, suatu hari bisa dipecahkan komputer kuantum. QoreChain menyelesaikannya dengan tanda tangan hybrid: setiap transaksi ditandatangani dua kunci sekaligus — secp256k1 dan ML-DSA-87 — dan hanya bisa dikirim saat window otorisasi EVM sedang terbuka. Kunci yang dicuri saja tidak cukup."
+## Scene 2 — The problem (0:15–0:45)
+**Show:** stay on the main page, move the cursor to the 'How it works' section.
+**Say:**
+> "An ordinary wallet key, secp256k1, could one day be broken by a quantum computer. QoreChain solves this with hybrid signing: every transaction is signed with two keys at once — secp256k1 and ML-DSA-87 — and can only be sent while an EVM authorisation window is open. A stolen key alone is not enough."
 
-## Adegan 3 — Demo web (0:45–1:20)
-**Tampilkan:** klik Connect Wallet → hubungkan QoreX (testnet, akun sudah terisi QOR) → status window terlihat "aktif" → ketik pesan → klik "Tanda tangani" → setujui di QoreX → tunggu tx sukses → entri muncul di daftar.
-**Katakan:**
-> "Dari web, pengunjung cukup hubungkan QoreX, lalu tanda tangani. QoreX mendaftarkan kunci ML-DSA-87 dan membuka window-nya sendiri di dalam persetujuan. Pesan langsung tercatat di chain."
+## Scene 3 — Web demo (0:45–1:20)
+**Show:** click Connect Wallet → connect QoreX (testnet, account funded with QOR) → window status shows "live" → type a message → click "Sign" → approve in QoreX → wait for the tx to succeed → the entry appears in the list.
+**Say:**
+> "On the web, a visitor just connects QoreX and signs. QoreX registers the ML-DSA-87 key and opens the window itself inside the approval. The message is recorded on-chain right away."
 
-## Adegan 4 — Bukti di chain (1:20–1:50)
-**Tampilkan:** buka explorer (explore.qore.network, tab Testnet) → alamat kontrak `0x1D71b23650B30558F9C6aDAf916382b243ECFb55` → tunjukkan transaksi tanda tangan pertama (blok 10718571) dan daftar entri.
-**Katakan:**
-> "Ini buktinya di explorer: kontrak sudah ter-deploy, dan tanda tangan pertama tercatat di blok 10718571. Semuanya transaksi asli di testnet, bukan mock."
+## Scene 4 — Proof on-chain (1:20–1:50)
+**Show:** open the explorer (explore.qore.network, Testnet tab) → contract address `0x1D71b23650B30558F9C6aDAf916382b243ECFb55` → show the first signature transaction (block 10718571) and the entry list.
+**Say:**
+> "Here is the proof in the explorer: the contract is deployed, and the first signature is recorded in block 10718571. These are real testnet transactions, not mocks."
 
-## Adegan 5 — Fitur (1:50–2:20)
-**Tampilkan:** klik statistik, ketik di kolom pencarian, ganti urutan Terbaru/Terlama, klik "Salin alamat".
-**Katakan:**
-> "Web-nya berbahasa Indonesia, dengan statistik tanda tangan, pencarian pesan, urutan terbaru atau terlama, dan penjelasan cara kerja hybrid signing. Bukan salinan contoh tutorial — desain dan fiturnya dibuat sendiri."
+## Scene 5 — Features (1:50–2:20)
+**Show:** click the stats, type in the search box, switch Newest/Oldest order, click "Copy address".
+**Say:**
+> "The app is in English, with signature stats, message search, newest-or-oldest ordering, and a how-it-works explainer for hybrid signing. Not a copy of the tutorial example — the design and features were built from scratch."
 
-## Adegan 6 — Penutup (2:20–2:40)
-**Tampilkan:** kembali ke halaman utama, lalu tampilkan README repo (atau layar akhir dengan tautan).
-**Katakan:**
-> "Buku Tamu Quantum — repositori dan alamat kontrak ada di deskripsi. Terima kasih, dan sampai jumpa di Q-Day."
+## Scene 6 — Closing (2:20–2:40)
+**Show:** back to the main page, then show the repo README (or an end screen with links).
+**Say:**
+> "Quantum Guestbook — the repository and contract address are in the description. Thank you, and see you on Q-Day."
 
-## Checklist sebelum rekam
-- [ ] QoreX di testnet, saldo QOR cukup (window + 1 tanda tangan).
-- [ ] Halaman web sudah menampilkan entri yang ada.
-- [ ] Tab explorer sudah dibuka di alamat kontrak.
-- [ ] Matikan notifikasi HP/komputer; tutup tab yang tidak perlu.
-- [ ] Rekam satu take; kalau salah ucap di tengah, ulangi kalimatnya saja lalu potong saat edit.
+## Checklist before recording
+- [ ] QoreX on testnet, enough QOR balance (window + 1 signature).
+- [ ] The web page already shows the existing entries.
+- [ ] Explorer tab already open at the contract address.
+- [ ] Notifications off on phone/computer; close unneeded tabs.
+- [ ] Record in one take; if you mis-speak, just repeat the sentence and cut it in editing.

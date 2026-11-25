@@ -1,12 +1,10 @@
-# Buku Tamu Quantum
+# Quantum Guestbook
 
-![Buku Tamu Quantum](featured.webp)
+![Quantum Guestbook](featured.webp)
 
 **A post-quantum guestbook on QoreChain — every signature is hybrid-signed (secp256k1 + ML-DSA-87) and only possible inside an open EVM authorisation window.**
 
 Built for **QoreChain Developer Fest — "Build Before Q-Day"** (Intermediate / Post-Quantum dApp track).
-
-> UI berbahasa Indonesia. / The web UI is in Indonesian (Bahasa Indonesia).
 
 ## What it is
 
@@ -34,7 +32,7 @@ buku-tamu-quantum/
 │   ├── scripts/window.ts   # register PQC key, open/status EVM window
 │   └── scripts/sign.ts     # sign from the terminal, read entries
 └── web/             # Vite + React + wagmi + RainbowKit + QoreX wallet
-    └── src/App.tsx  # Indonesian UI: stats, search, sort, copy address, how-it-works
+    └── src/App.tsx  # English UI: stats, search, sort, copy address, how-it-works
 ```
 
 ## Run it yourself
@@ -52,7 +50,7 @@ cp .env.example .env   # fill PRIVATE_KEY + QORE_PQC_RECOVERY_CODE
 pnpm window register
 pnpm window open
 pnpm deploy:testnet
-pnpm sign "Halo dari Buku Tamu Quantum!"
+pnpm sign "Hello from Quantum Guestbook!"
 
 # 3. Web
 cd ../web
@@ -67,9 +65,9 @@ Never use a real wallet or recovery phrase for testnet work — throwaway accoun
 
 This project started from the official Q-Day Guestbook example and was customised into its own dApp:
 
-- **Indonesian UI** throughout (the example is in English).
+- **English UI** throughout (the example is in English too, but this one was rewritten with its own copy).
 - **Own design** — warm gold/terracotta theme instead of the example's purple/teal.
-- **Extra features:** live stats (total signatures, unique signers, last signature in relative time), search/filter by message or address, newest/oldest sort, copy-contract-address button, ML-DSA-87 badge per entry, Indonesian timestamps (WIB), and a "Cara kerjanya" explainer of hybrid signing.
+- **Extra features:** live stats (total signatures, unique signers, last signature in relative time), search/filter by message or address, newest/oldest sort, copy-contract-address button, ML-DSA-87 badge per entry, and a "How it works" explainer of hybrid signing.
 - **Verified end-to-end on testnet:** key registration, window opening, contract deployment and the first signature are all real on-chain transactions (see links above).
 
 ## License

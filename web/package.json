@@ -1,9 +1,9 @@
 {
-  "name": "buku-tamu-quantum-web",
+  "name": "quantum-guestbook-web",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Buku Tamu Quantum — dApp buku tamu post-quantum (ML-DSA-87 + window EVM) untuk QoreChain testnet, dibuat dengan Vite + React + wagmi.",
+  "description": "Quantum Guestbook — a post-quantum guestbook dApp (ML-DSA-87 + EVM window) for the QoreChain testnet, built with Vite + React + wagmi.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
