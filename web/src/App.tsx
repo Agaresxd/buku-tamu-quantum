@@ -15,6 +15,10 @@ import {
 const GUESTBOOK = import.meta.env.VITE_GUESTBOOK_ADDRESS as Address | undefined;
 const REST = `${location.origin}/lcd`; // Vite proxy to https://api-testnet.qore.host
 const EXPLORER = "https://explore.qore.network/tx/";
+// Static hosts (e.g. GitHub Pages) have no /lcd proxy and the REST endpoint
+// sends no CORS headers, so the window status cannot be read there. Hide it
+// in static builds (VITE_HIDE_WINDOW_STATUS=true); local dev keeps it.
+const HIDE_WINDOW = import.meta.env.VITE_HIDE_WINDOW_STATUS === "true";
 
 const abi = parseAbi([
   "function sign(string message)",
@@ -156,8 +160,12 @@ export function App() {
             <span>{chainId === 9800 ? "qorechain-diana EVM (9800)" : `wrong network ${chainId}: switch to 9800`}</span>
             <div>Balance</div>
             <span>{balance ? `${Number(formatEther(balance.value)).toLocaleString("en-US")} QOR` : "..."}</span>
-            <div>EVM window</div>
-            <WindowStatus address={address} />
+            {!HIDE_WINDOW && (
+              <>
+                <div>EVM window</div>
+                <WindowStatus address={address} />
+              </>
+            )}
           </div>
         )}
       </section>
