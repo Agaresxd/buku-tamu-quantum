@@ -1,0 +1,49 @@
+{
+  "_format": "hh3-sol-build-info-1",
+  "id": "solc-0_8_28-804c463040016176c85aaa7168aac4443868213a",
+  "solcVersion": "0.8.28",
+  "solcLongVersion": "0.8.28+commit.7893614a",
+  "compilerType": "solc",
+  "toolVersions": {
+    "hardhat": "3.21.2"
+  },
+  "userSourceNameMap": {
+    "contracts/QDayGuestbook.sol": "project/contracts/QDayGuestbook.sol"
+  },
+  "input": {
+    "language": "Solidity",
+    "settings": {
+      "evmVersion": "cancun",
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "outputSelection": {
+        "*": {
+          "": [
+            "ast"
+          ],
+          "*": [
+            "abi",
+            "evm.bytecode.linkReferences",
+            "evm.bytecode.object",
+            "evm.bytecode.opcodes",
+            "evm.bytecode.sourceMap",
+            "evm.deployedBytecode.immutableReferences",
+            "evm.deployedBytecode.linkReferences",
+            "evm.deployedBytecode.object",
+            "evm.deployedBytecode.opcodes",
+            "evm.deployedBytecode.sourceMap",
+            "evm.methodIdentifiers"
+          ]
+        }
+      },
+      "remappings": []
+    },
+    "sources": {
+      "project/contracts/QDayGuestbook.sol": {
+        "content": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.28;\n\n/// @title QDayGuestbook\n/// @notice A public guestbook for the Build Before Q-Day workshops on the\n///         QoreChain testnet. Anyone can sign once per address; messages are\n///         short and stored on chain.\ncontract QDayGuestbook {\n    struct Entry {\n        address author;\n        uint64 timestamp;\n        string message;\n    }\n\n    uint256 public constant MAX_LENGTH = 140;\n\n    Entry[] private entries;\n    mapping(address => bool) public hasSigned;\n\n    event Signed(uint256 indexed id, address indexed author, string message);\n\n    error AlreadySigned();\n    error BadLength();\n\n    function sign(string calldata message) external {\n        uint256 len = bytes(message).length;\n        if (len == 0 || len > MAX_LENGTH) revert BadLength();\n        if (hasSigned[msg.sender]) revert AlreadySigned();\n        hasSigned[msg.sender] = true;\n        entries.push(Entry(msg.sender, uint64(block.timestamp), message));\n        emit Signed(entries.length - 1, msg.sender, message);\n    }\n\n    function count() external view returns (uint256) {\n        return entries.length;\n    }\n\n    /// @notice The newest `limit` entries, newest first.\n    function latest(uint256 limit) external view returns (Entry[] memory out) {\n        uint256 n = entries.length;\n        if (limit > n) limit = n;\n        out = new Entry[](limit);\n        for (uint256 i = 0; i < limit; i++) out[i] = entries[n - 1 - i];\n    }\n}\n"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+# Dependencies & build output
+node_modules/
+dist/
+cache/
+artifacts/
+typechain-types/
+.vite/
+
+# Secrets — never commit (see .env.example in each app)
+.env
+.env.local
