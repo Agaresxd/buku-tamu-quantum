@@ -14,9 +14,9 @@ Language: English. Record at 1080p, browser zoom 100%, notifications off.
 > "An ordinary wallet key, secp256k1, could one day be broken by a quantum computer. QoreChain solves this with hybrid signing: every transaction is signed with two keys at once — secp256k1 and ML-DSA-87 — and can only be sent while an EVM authorisation window is open. A stolen key alone is not enough."
 
 ## Scene 3 — Web demo (0:45–1:20)
-**Show:** click Connect Wallet → connect QoreX (testnet, account funded with QOR) → window status shows "live" → type a message → click "Sign" → approve in QoreX → wait for the tx to succeed → the entry appears in the list.
+**Show:** the live demo page (https://agaresxd.github.io/buku-tamu-quantum/) — scroll through the 3 on-chain entries from 3 different addresses, show the stats row, then click Connect Wallet to show the QoreX connection (note: live signing from a phone is not possible — the QoreX mobile dApp browser's EVM provider is read-only by design, so the signing itself is shown via the entries already on-chain; signing works from a desktop browser with the QoreX extension).
 **Say:**
-> "On the web, a visitor just connects QoreX and signs. QoreX registers the ML-DSA-87 key and opens the window itself inside the approval. The message is recorded on-chain right away."
+> "On the web, a visitor just connects QoreX and signs. QoreX registers the ML-DSA-87 key and opens the window itself inside the approval. Three signatures from three different addresses are already on-chain."
 
 ## Scene 4 — Proof on-chain (1:20–1:50)
 **Show:** open the explorer (explore.qore.network, Testnet tab) → contract address `0x1D71b23650B30558F9C6aDAf916382b243ECFb55` → show the first signature transaction (block 10718571) and the entry list.

@@ -1,0 +1,11 @@
+Narrator: Hi, this is Quantum Guestbook — a post-quantum guestbook on QoreChain, built for Build Before Q-Day.
+
+Narrator: An ordinary wallet key, secp256k1, could one day be broken by a quantum computer. QoreChain solves this with hybrid signing: every transaction is signed with two keys at once — secp256k1 and ML-DSA-87 — and can only be sent while an EVM authorisation window is open. A stolen key alone is not enough.
+
+Narrator: On the web, a visitor just connects QoreX and signs. QoreX registers the ML-DSA-87 key and opens the window itself inside the approval. Three signatures from three different addresses are already on-chain.
+
+Narrator: Here is the proof in the explorer: the contract is deployed, and the first signature is recorded in block one zero seven one eight five seven one. These are real testnet transactions, not mocks.
+
+Narrator: The app is in English, with signature stats, message search, newest-or-oldest ordering, and a how-it-works explainer for hybrid signing. Not a copy of the tutorial example — the design and features were built from scratch.
+
+Narrator: Quantum Guestbook — the repository and contract address are in the description. Thank you, and see you on Q-Day.
