@@ -96,6 +96,10 @@ export function App() {
   const write = useWriteContract();
   const receipt = useWaitForTransactionReceipt({ hash: write.data });
   const rejection = write.error ? classifyEvmWindowRejection(write.error) : undefined;
+  // EIP-1193 4100: the wallet refused the method/account. On QoreX this is
+  // the usual sign of a default Cosmos (coin 118) account, which cannot sign
+  // EVM transactions — only an Ethereum account (coin 60) can.
+  const notAuthorized = !!write.error && /not been authorized|4100/.test(write.error.message ?? "");
 
   const entries = useMemo(() => {
     const all = latest.data ?? [];
@@ -188,6 +192,10 @@ export function App() {
               </button>
             </div>
             <p className="small">{message.length}/140 characters, one signature per address.</p>
+            <p className="small">
+              Signing needs an Ethereum account (coin 60) in QoreX — a default Cosmos account cannot sign EVM
+              transactions. Add one under Your accounts, fund it, select it, then open the EVM window.
+            </p>
           </>
         )}
         {write.data && (
@@ -199,7 +207,15 @@ export function App() {
             {receipt.isLoading ? "waiting for the block..." : receipt.data ? `${receipt.data.status} in block ${receipt.data.blockNumber}` : ""}
           </p>
         )}
-        {write.error && <div className="error">Rejected: {rejection ? REMEDY[rejection] : write.error.message.split("\n")[0]}</div>}
+        {write.error && (
+          <div className="error">
+            {rejection
+              ? `Rejected: ${REMEDY[rejection]}`
+              : notAuthorized
+                ? "QoreX refused: this account cannot sign EVM transactions. In QoreX, add an Ethereum account (coin 60) under Your accounts, fund it, select it, then open the EVM window (Home card “MetaMask on QoreChain”, or Settings → Security → EVM access window) and try again."
+                : `Rejected: ${write.error.message.split("\n")[0]}`}
+          </div>
+        )}
       </section>
 
       <section className="card">
