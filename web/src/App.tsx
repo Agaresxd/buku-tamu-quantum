@@ -100,6 +100,10 @@ export function App() {
   // the usual sign of a default Cosmos (coin 118) account, which cannot sign
   // EVM transactions — only an Ethereum account (coin 60) can.
   const notAuthorized = !!write.error && /not been authorized|4100/.test(write.error.message ?? "");
+  // A generic RPC failure after the wallet accepted the request: on QoreChain
+  // this usually means the account cannot pay gas (0 QOR) or no EVM window
+  // is open for it.
+  const rpcError = !!write.error && /unknown rpc|internal json-rpc|rpc error/i.test(write.error.message ?? "");
 
   const entries = useMemo(() => {
     const all = latest.data ?? [];
@@ -196,6 +200,12 @@ export function App() {
               Signing needs an Ethereum account (coin 60) in QoreX — a default Cosmos account cannot sign EVM
               transactions. Add one under Your accounts, fund it, select it, then open the EVM window.
             </p>
+            {balance && balance.value === 0n && (
+              <p className="error">
+                This account has 0 QOR — it cannot pay gas. Send a few test QOR to it from your main QoreX account
+                (or claim the faucet), then try again.
+              </p>
+            )}
           </>
         )}
         {write.data && (
@@ -213,7 +223,9 @@ export function App() {
               ? `Rejected: ${REMEDY[rejection]}`
               : notAuthorized
                 ? "QoreX refused: this account cannot sign EVM transactions. In QoreX, add an Ethereum account (coin 60) under Your accounts, fund it, select it, then open the EVM window (Home card “MetaMask on QoreChain”, or Settings → Security → EVM access window) and try again."
-                : `Rejected: ${write.error.message.split("\n")[0]}`}
+                : rpcError
+                  ? "The chain refused the transaction. Most common causes: this account has 0 QOR (it cannot pay gas), or no EVM window is open. Fund the account from your main QoreX account and open the EVM window (Home card “MetaMask on QoreChain”), then try again."
+                  : `Rejected: ${write.error.message.split("\n")[0]}`}
           </div>
         )}
       </section>
